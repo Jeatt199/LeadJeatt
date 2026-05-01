@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Холбоо барих — LeadJeatt</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{--gold:#C9A84C;--gold2:#e8c96a;--dark:#111;--off:#f5f3ee;}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',sans-serif;background:#fff;color:#111;}
+a{text-decoration:none;}
+
+/* NAV */
+nav{background:#111;display:flex;justify-content:space-between;align-items:center;padding:1rem 2rem;position:sticky;top:0;z-index:100;gap:12px;flex-wrap:wrap;}
+.logo{font-family:'Playfair Display',serif;font-weight:900;font-size:1.4rem;color:#C9A84C;letter-spacing:1px;}
+.nav-links{display:flex;gap:1.6rem;align-items:center;flex-wrap:wrap;}
+.nav-links a{color:#ccc;font-size:14px;font-weight:500;transition:color .2s;}
+.nav-links a:hover,.nav-links a.active{color:#C9A84C;}
+.nav-right{display:flex;align-items:center;gap:10px;}
+.nav-login{color:#aaa;font-size:13px;padding:7px 14px;border:1px solid #333;border-radius:6px;transition:all .2s;}
+.nav-login:hover{border-color:#C9A84C;color:#C9A84C;}
+.nav-cta{background:#C9A84C;color:#111;padding:9px 20px;border-radius:6px;font-size:14px;font-weight:700;transition:background .2s;}
+.nav-cta:hover{background:#e8c96a;}
+@media(max-width:720px){.nav-links{display:none;}}
+
+/* HERO */
+.hero{background:#111;padding:5rem 2rem 4rem;text-align:center;}
+.badge{display:inline-block;border:1px solid #C9A84C;color:#C9A84C;font-size:12px;font-weight:600;padding:5px 16px;border-radius:20px;margin-bottom:1.5rem;letter-spacing:1px;text-transform:uppercase;}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(2rem,5vw,3.2rem);font-weight:900;color:#fff;line-height:1.1;margin-bottom:1rem;}
+.hero h1 em{color:#C9A84C;font-style:normal;}
+.hero>p{font-size:1rem;color:#aaa;max-width:480px;margin:0 auto;line-height:1.7;}
+
+/* SHARED */
+.wrap{max-width:1000px;margin:0 auto;padding:5rem 2rem;}
+.sec-label{font-size:11px;font-weight:700;color:#C9A84C;text-transform:uppercase;letter-spacing:2px;margin-bottom:.5rem;}
+.sec-title{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,3vw,2.2rem);font-weight:900;color:#111;margin-bottom:.7rem;}
+.sec-sub{font-size:.95rem;color:#666;margin-bottom:2rem;max-width:500px;line-height:1.7;}
+.btn-gold{background:#C9A84C;color:#111;padding:13px 28px;border-radius:6px;font-size:15px;font-weight:700;transition:background .2s;display:inline-block;border:none;cursor:pointer;font-family:'Inter',sans-serif;}
+.btn-gold:hover{background:#e8c96a;}
+.btn-outline{background:transparent;color:#C9A84C;padding:12px 28px;border-radius:6px;font-size:15px;font-weight:600;border:1px solid #C9A84C;transition:all .2s;display:inline-block;}
+.btn-outline:hover{background:#C9A84C;color:#111;}
+
+/* CONTACT GRID */
+.contact-grid{display:grid;grid-template-columns:1fr 1.3fr;gap:2.5rem;align-items:start;}
+@media(max-width:720px){.contact-grid{grid-template-columns:1fr;}}
+
+/* INFO CARDS */
+.info-cards{display:flex;flex-direction:column;gap:14px;}
+.info-card{background:#f9f7f2;border:1px solid #ede9df;border-radius:10px;padding:1.2rem 1.4rem;display:flex;align-items:flex-start;gap:14px;transition:border-color .2s;}
+.info-card:hover{border-color:#C9A84C;}
+.ic-ico{width:44px;height:44px;border-radius:8px;background:#111;display:flex;align-items:center;justify-content:center;font-size:1.2rem;flex-shrink:0;}
+.ic-body{}
+.ic-label{font-size:11px;font-weight:700;color:#aaa;text-transform:uppercase;letter-spacing:1px;margin-bottom:4px;}
+.ic-val{font-size:14px;font-weight:600;color:#111;line-height:1.5;}
+.ic-val a{color:#111;transition:color .2s;}
+.ic-val a:hover{color:#C9A84C;}
+.ic-note{font-size:12px;color:#888;margin-top:2px;}
+
+/* FORM */
+.form-card{background:#111;border:1px solid #222;border-radius:12px;padding:2rem;}
+.form-card h3{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:900;color:#fff;margin-bottom:.3rem;}
+.form-card>p{font-size:13px;color:#888;margin-bottom:1.5rem;line-height:1.6;}
+.fg{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;}
+@media(max-width:500px){.fg{grid-template-columns:1fr;}}
+.fi{width:100%;padding:12px 14px;border-radius:6px;border:1px solid #2a2a2a;background:#1a1a1a;color:#fff;font-size:14px;font-family:'Inter',sans-serif;outline:none;transition:border-color .2s;}
+.fi:focus{border-color:#C9A84C;}
+.fi::placeholder{color:#555;}
+select.fi{color:#888;cursor:pointer;}
+select.fi option{background:#1a1a1a;color:#fff;}
+textarea.fi{min-height:110px;resize:vertical;margin-bottom:12px;}
+.f-submit{width:100%;background:#C9A84C;color:#111;padding:14px;border-radius:6px;border:none;font-size:15px;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif;transition:background .2s;}
+.f-submit:hover{background:#e8c96a;}
+
+/* TOAST */
+.toast{display:none;position:fixed;bottom:2rem;right:2rem;background:#1a1a1a;border:1px solid #C9A84C;border-radius:10px;padding:1rem 1.5rem;z-index:9999;box-shadow:0 8px 32px rgba(0,0,0,.5);animation:slideUp .35s ease;}
+.toast.show{display:flex;align-items:center;gap:10px;}
+.toast-icon{font-size:1.2rem;color:#4caf50;}
+.toast-text{font-size:14px;color:#fff;font-weight:600;}
+@keyframes slideUp{from{opacity:0;transform:translateY(16px);}to{opacity:1;transform:translateY(0);}}
+
+/* WHY CARDS */
+.why-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;margin-top:2rem;}
+.wc{background:#fff;border:1px solid #ede9df;border-radius:10px;padding:1.6rem;text-align:center;transition:border-color .2s,box-shadow .2s;}
+.wc:hover{border-color:#C9A84C;box-shadow:0 4px 20px rgba(201,168,76,.1);}
+.wc-ico{font-size:2rem;margin-bottom:.8rem;}
+.wc h3{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:#111;margin-bottom:.5rem;}
+.wc p{font-size:13px;color:#666;line-height:1.6;}
+
+/* MAP */
+.map-wrap{border-radius:12px;overflow:hidden;border:1px solid #ede9df;margin-top:3rem;}
+.map-wrap iframe{width:100%;height:360px;border:none;display:block;}
+
+/* LIVE DOT */
+.live{display:flex;align-items:center;gap:6px;font-size:12px;color:#666;}
+.dot{width:7px;height:7px;border-radius:50%;background:#4caf50;animation:blink 1.5s infinite;}
+@keyframes blink{0%,100%{opacity:1;}50%{opacity:.3;}}
+
+/* MODAL */
+.mo{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.75);z-index:999;justify-content:center;align-items:center;}
+.mo.active{display:flex;}
+.md{background:#fff;border-radius:12px;padding:2rem;max-width:440px;width:90%;position:relative;}
+.md h3{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:900;color:#111;margin-bottom:.4rem;}
+.md>p{font-size:14px;color:#666;margin-bottom:1.2rem;line-height:1.6;}
+.md input,.md textarea{width:100%;padding:11px 13px;border-radius:6px;border:1px solid #ddd;font-size:14px;font-family:'Inter',sans-serif;margin-bottom:10px;color:#111;outline:none;}
+.md input:focus,.md textarea:focus{border-color:#C9A84C;}
+.md textarea{min-height:90px;resize:vertical;}
+.md-btn{width:100%;background:#C9A84C;color:#111;padding:13px;border-radius:6px;border:none;font-size:15px;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif;transition:background .2s;}
+.md-btn:hover{background:#e8c96a;}
+.md-close{position:absolute;top:14px;right:18px;background:none;border:none;font-size:22px;cursor:pointer;color:#aaa;}
+.md-close:hover{color:#111;}
+.md-ok{display:none;margin-top:10px;color:#C9A84C;font-size:14px;font-weight:600;text-align:center;}
+
+/* FOOTER */
+footer{background:#0a0a0a;padding:1.5rem 2rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;border-top:1px solid #1a1a1a;}
+.f-logo{font-family:'Playfair Display',serif;font-weight:900;font-size:1.1rem;color:#C9A84C;}
+footer p{font-size:12px;color:#555;}
+.f-nav{display:flex;gap:16px;flex-wrap:wrap;}
+.f-nav a{font-size:12px;color:#555;transition:color .2s;}
+.f-nav a:hover{color:#C9A84C;}
+</style>
+</head>
+<body>
+
+<!-- TOAST -->
+<div class="toast" id="toast">
+  <span class="toast-icon">✓</span>
+  <span class="toast-text">Амжилттай илгээгдлээ! 24 цагт холбогдоно.</span>
+</div>
+
+<!-- MODAL -->
+<div class="mo" id="qm">
+  <div class="md">
+    <button class="md-close" onclick="cm('qm')">&times;</button>
+    <h3>Үнэгүй санал авах</h3>
+    <p>Мэдээллээ үлдээгээрэй, 24 цагийн дотор холбогдоно.</p>
+    <input type="text" placeholder="Таны нэр *" id="qn">
+    <input type="email" placeholder="Имэйл хаяг *" id="qe">
+    <input type="tel" placeholder="Утасны дугаар">
+    <textarea placeholder="Төслийнхөө талаар..."></textarea>
+    <button class="md-btn" onclick="sq()">Илгээх</button>
+    <div class="md-ok" id="qs">✓ Амжилттай! Удахгүй холбогдоно.</div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a class="logo" href="index.html">LeadJeatt</a>
+  <div class="nav-links">
+    <a href="index.html">Нүүр</a>
+    <a href="services.html">Үйлчилгээ</a>
+    <a href="portfolio.html">Ажлууд</a>
+    <a href="pricing.html">Үнэ</a>
+    <a href="blog.html">Блог</a>
+    <a href="contact.html" class="active">Холбоо барих</a>
+  </div>
+  <div class="nav-right">
+    <a class="nav-login" href="login.html">Нэвтрэх</a>
+    <a class="nav-cta" href="#" onclick="om('qm');return false;">Үнийн санал авах</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="badge">Холбоо барих</div>
+  <h1>Бидэнтэй <em>холбогдоорой</em></h1>
+  <p>Асуулт, санал, хамтын ажиллагааны тухай — бид 24 цагийн дотор хариулна.</p>
+</div>
+
+<!-- CONTACT MAIN -->
+<div class="wrap">
+  <div class="contact-grid">
+
+    <!-- LEFT: INFO CARDS -->
+    <div class="info-cards">
+      <div class="info-card">
+        <div class="ic-ico">✉</div>
+        <div class="ic-body">
+          <div class="ic-label">Gmail</div>
+          <div class="ic-val"><a href="mailto:LeadJeatt@gmail.com">LeadJeatt@gmail.com</a></div>
+          <div class="ic-note">Имэйлд 2–4 цагт хариулна</div>
+        </div>
+      </div>
+      <div class="info-card">
+        <div class="ic-ico">📞</div>
+        <div class="ic-body">
+          <div class="ic-label">Утас</div>
+          <div class="ic-val"><a href="tel:+97690862010">+976 9086 2010</a></div>
+          <div class="ic-note">Даваа–Баасан 09:00–18:00</div>
+        </div>
+      </div>
+      <div class="info-card">
+        <div class="ic-ico">📍</div>
+        <div class="ic-body">
+          <div class="ic-label">Байршил</div>
+          <div class="ic-val">Улаанбаатар, Монгол Улс</div>
+          <div class="ic-note">Онлайн уулзалт боломжтой</div>
+        </div>
+      </div>
+      <div class="info-card">
+        <div class="ic-ico">🕐</div>
+        <div class="ic-body">
+          <div class="ic-label">Ажлын цаг</div>
+          <div class="ic-val">Даваа–Баасан 09:00–18:00</div>
+          <div class="ic-note">Бямба гаригт мессежээр холбогдоно</div>
+        </div>
+      </div>
+      <div class="info-card">
+        <div class="ic-ico">💬</div>
+        <div class="ic-body">
+          <div class="ic-label">WhatsApp</div>
+          <div class="ic-val"><a href="https://wa.me/97690862010" target="_blank" rel="noopener">+976 9086 2010 — WhatsApp</a></div>
+          <div class="ic-note">Шуурхай хариу авах боломжтой</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: FORM -->
+    <div class="form-card">
+      <h3>Захиас илгээх</h3>
+      <p>Мэдээллээ үлдээгээрэй — 24 цагийн дотор холбогдоно.</p>
+      <form id="cform" onsubmit="sendForm(event)">
+        <div class="fg">
+          <input class="fi" type="text" id="f-name" placeholder="Таны нэр *" required>
+          <input class="fi" type="email" id="f-email" placeholder="Имэйл хаяг *" required>
+        </div>
+        <div class="fg">
+          <input class="fi" type="tel" id="f-phone" placeholder="Утасны дугаар">
+          <select class="fi" id="f-service">
+            <option value="" disabled selected>Үйлчилгээ сонгох</option>
+            <option value="website">Вэбсайт</option>
+            <option value="ecommerce">E-Commerce</option>
+            <option value="design">Дизайн</option>
+            <option value="seo">SEO</option>
+          </select>
+        </div>
+        <textarea class="fi" id="f-msg" placeholder="Мессеж бичих... Төслийнхөө талаар дэлгэрэнгүй бичвэл зохилтой."></textarea>
+        <button class="f-submit" type="submit">Илгээх →</button>
+      </form>
+    </div>
+
+  </div>
+
+  <!-- WHY CARDS -->
+  <div style="margin-top:4rem;">
+    <div class="sec-label">Яагаад бидэнтэй холбогдох вэ</div>
+    <h2 class="sec-title">Таны цаг бол бидний эрхэм зүйл</h2>
+    <div class="why-grid">
+      <div class="wc">
+        <div class="wc-ico">⚡</div>
+        <h3>Хурдан хариу</h3>
+        <p>Илгээсэн 24 цагийн дотор бид хариулах болно. Яаралтай тохиолдолд WhatsApp ашиглана уу.</p>
+      </div>
+      <div class="wc">
+        <div class="wc-ico">🎯</div>
+        <h3>Үнэгүй зөвлөгөө</h3>
+        <p>Анхны уулзалт болон үнийн санал бүрэн үнэгүй. Ямар ч нэмэлт төлбөр байхгүй.</p>
+      </div>
+      <div class="wc">
+        <div class="wc-ico">✅</div>
+        <h3>Далд төлбөргүй</h3>
+        <p>Бид тодорхой, ил тод үнийн санал гаргадаг. Нэмэлт, нуугдмал зардал огт байхгүй.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- MAP -->
+  <div class="map-wrap">
+    <iframe
+      src="https://maps.google.com/maps?q=Ulaanbaatar,Mongolia&output=embed"
+      title="Улаанбаатар байршил"
+      allowfullscreen
+      loading="lazy"
+      referrerpolicy="no-referrer-when-downgrade">
+    </iframe>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="f-logo">LeadJeatt</div>
+  <div class="f-nav">
+    <a href="index.html">Нүүр</a>
+    <a href="services.html">Үйлчилгээ</a>
+    <a href="portfolio.html">Ажлууд</a>
+    <a href="pricing.html">Үнэ</a>
+    <a href="blog.html">Блог</a>
+    <a href="contact.html">Холбоо барих</a>
+  </div>
+  <div class="live"><span class="dot"></span>7 хүн одоо үзэж байна</div>
+  <p>© 2026 LeadJeatt · <a href="mailto:LeadJeatt@gmail.com" style="color:#C9A84C;">LeadJeatt@gmail.com</a></p>
+</footer>
+
+<script>
+function om(id){document.getElementById(id).classList.add('active');}
+function cm(id){document.getElementById(id).classList.remove('active');}
+document.getElementById('qm').addEventListener('click',function(e){if(e.target===this)cm('qm');});
+function sq(){
+  var n=document.getElementById('qn').value.trim(),e=document.getElementById('qe').value.trim();
+  if(!n||!e){alert('Нэр болон имэйлээ оруулна уу.');return;}
+  document.getElementById('qs').style.display='block';
+  setTimeout(function(){cm('qm');document.getElementById('qs').style.display='none';},2500);
+}
+
+function showToast(){
+  var t=document.getElementById('toast');
+  t.classList.add('show');
+  setTimeout(function(){t.classList.remove('show');},4000);
+}
+
+function sendForm(e){
+  e.preventDefault();
+  var name=document.getElementById('f-name').value.trim();
+  var email=document.getElementById('f-email').value.trim();
+  if(!name||!email){alert('Нэр болон имэйлээ оруулна уу.');return;}
+  // Show success toast
+  showToast();
+  // Reset form
+  document.getElementById('cform').reset();
+}
+</script>
+</body>
+</html>

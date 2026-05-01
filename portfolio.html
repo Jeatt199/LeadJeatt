@@ -44,7 +44,7 @@ nav{background:#111;display:flex;justify-content:space-between;align-items:cente
 .sec-sub{font-size:.9rem;color:#888;margin-bottom:2.5rem;max-width:560px;line-height:1.7;}
 
 /* PROJECT CARD — FULL SHOWCASE */
-.project-section{margin-bottom:6rem;}
+.project-section{margin-bottom:6rem;content-visibility:auto;contain-intrinsic-size:700px;}
 .project-section:last-child{margin-bottom:0;}
 
 .proj-showcase{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start;}
@@ -53,8 +53,8 @@ nav{background:#111;display:flex;justify-content:space-between;align-items:cente
 @media(max-width:800px){.proj-showcase,.proj-showcase.reverse{grid-template-columns:1fr;direction:ltr;}}
 
 /* BROWSER MOCKUP */
-.browser{background:#1a1a1a;border-radius:12px;overflow:hidden;border:1px solid #2a2a2a;box-shadow:0 20px 60px rgba(0,0,0,.4);transition:transform .3s,box-shadow .3s;}
-.browser:hover{transform:translateY(-6px);box-shadow:0 28px 80px rgba(201,168,76,.15);}
+.browser{background:#1a1a1a;border-radius:12px;overflow:hidden;border:1px solid #2a2a2a;box-shadow:0 8px 24px rgba(0,0,0,.35);transition:transform .25s,box-shadow .25s;will-change:transform;contain:layout style;}
+.browser:hover{transform:translateY(-4px);box-shadow:0 16px 40px rgba(201,168,76,.12);}
 .browser-bar{background:#2a2a2a;padding:10px 14px;display:flex;align-items:center;gap:10px;border-bottom:1px solid #333;}
 .browser-dots{display:flex;gap:6px;}
 .bd{width:11px;height:11px;border-radius:50%;}
@@ -880,13 +880,16 @@ function sq(){var n=document.getElementById('qn').value.trim(),e=document.getEle
 function filterProj(btn,cat){
   document.querySelectorAll('.fb').forEach(b=>b.classList.remove('active'));
   btn.classList.add('active');
-  document.querySelectorAll('.project-section').forEach(s=>{
-    if(cat==='all'||s.dataset.industry===cat){s.style.display='block';s.nextElementSibling&&s.nextElementSibling.classList.contains('proj-divider')&&(s.nextElementSibling.style.display='block');}
-    else{s.style.display='none';s.nextElementSibling&&s.nextElementSibling.classList.contains('proj-divider')&&(s.nextElementSibling.style.display='none');}
-  });
-  document.querySelectorAll('.mini-card').forEach(c=>{
-    if(cat==='all'||c.dataset.industry===cat){c.style.display='block';}
-    else{c.style.display='none';}
+  requestAnimationFrame(function(){
+    document.querySelectorAll('.project-section').forEach(function(s){
+      var show=cat==='all'||s.dataset.industry===cat;
+      s.style.display=show?'block':'none';
+      var nx=s.nextElementSibling;
+      if(nx&&nx.classList.contains('proj-divider'))nx.style.display=show?'block':'none';
+    });
+    document.querySelectorAll('.mini-card').forEach(function(c){
+      c.style.display=(cat==='all'||c.dataset.industry===cat)?'':'none';
+    });
   });
 }
 </script>
