@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Үнэ — LeadJeatt</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}body{font-family:'Inter',sans-serif;background:#fff;color:#111;}a{text-decoration:none;}
+nav{background:#111;display:flex;justify-content:space-between;align-items:center;padding:1rem 2rem;position:sticky;top:0;z-index:100;gap:12px;flex-wrap:wrap;}
+.logo{font-family:'Playfair Display',serif;font-weight:900;font-size:1.4rem;color:#C9A84C;letter-spacing:1px;}
+.nav-links{display:flex;gap:1.6rem;align-items:center;flex-wrap:wrap;}
+.nav-links a{color:#ccc;font-size:14px;font-weight:500;transition:color .2s;}
+.nav-links a:hover,.nav-links a.active{color:#C9A84C;}
+.nav-right{display:flex;align-items:center;gap:10px;}
+.nav-login{color:#aaa;font-size:13px;padding:7px 14px;border:1px solid #333;border-radius:6px;transition:all .2s;}
+.nav-login:hover{border-color:#C9A84C;color:#C9A84C;}
+.nav-cta{background:#C9A84C;color:#111;padding:9px 20px;border-radius:6px;font-size:14px;font-weight:700;transition:background .2s;}
+.nav-cta:hover{background:#e8c96a;}
+@media(max-width:720px){.nav-links{display:none;}}
+.page-hero{background:#111;padding:4rem 2rem 3rem;text-align:center;}
+.page-hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:900;color:#fff;margin-bottom:.8rem;}
+.page-hero h1 em{color:#C9A84C;font-style:normal;}
+.page-hero p{color:#aaa;font-size:.95rem;max-width:480px;margin:0 auto;line-height:1.7;}
+.wrap{max-width:960px;margin:0 auto;padding:5rem 2rem;}
+.sec-label{font-size:11px;font-weight:700;color:#C9A84C;text-transform:uppercase;letter-spacing:2px;margin-bottom:.5rem;}
+.sec-title{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,3vw,2.2rem);font-weight:900;color:#111;margin-bottom:.7rem;}
+.sec-sub{font-size:.95rem;color:#666;margin-bottom:2.5rem;max-width:500px;line-height:1.7;}
+.special{background:#111;border:1px solid #C9A84C;border-radius:10px;padding:1rem 1.5rem;display:flex;align-items:center;gap:12px;margin-bottom:2rem;flex-wrap:wrap;}
+.special p{font-size:13.5px;color:#fff;font-weight:600;}
+.special p span{color:#C9A84C;}
+.plan-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px;margin-bottom:2.5rem;}
+.plan{background:#fff;border:1px solid #ddd;border-radius:10px;padding:1.6rem;}
+.plan.feat{border:2px solid #C9A84C;background:#fffdf5;}
+.plan-badge{background:#C9A84C;color:#111;font-size:11px;padding:3px 12px;border-radius:20px;display:inline-block;margin-bottom:.7rem;font-weight:700;}
+.plan h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:#111;margin-bottom:4px;}
+.plan-price{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:900;color:#111;margin:.5rem 0;}
+.plan-price small{font-size:.8rem;font-weight:400;color:#888;font-family:'Inter',sans-serif;}
+.plan-note{font-size:12px;color:#C9A84C;font-weight:600;margin-bottom:.8rem;}
+.plan>p{font-size:13px;color:#666;margin-bottom:1rem;line-height:1.5;}
+.plan ul{list-style:none;margin-bottom:1.2rem;}
+.plan ul li{font-size:13px;color:#555;padding:4px 0;display:flex;align-items:center;gap:8px;}
+.plan ul li::before{content:'';width:6px;height:6px;border-radius:50%;background:#C9A84C;flex-shrink:0;}
+.plan-btn{width:100%;padding:11px;border-radius:6px;font-size:14px;cursor:pointer;font-family:'Inter',sans-serif;font-weight:600;border:1px solid #ddd;background:transparent;color:#111;transition:all .2s;}
+.plan-btn:hover{border-color:#C9A84C;color:#C9A84C;}
+.plan.feat .plan-btn{background:#C9A84C;color:#111;border-color:#C9A84C;}
+.plan.feat .plan-btn:hover{background:#e8c96a;}
+.addon-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;margin-bottom:3rem;}
+.addon{background:#fff;border:1px solid #eee;border-radius:8px;padding:.9rem 1rem;display:flex;justify-content:space-between;align-items:center;}
+.addon-n{font-size:13px;color:#555;display:flex;align-items:center;gap:6px;}
+.addon-p{font-size:13px;font-weight:700;color:#C9A84C;}
+.faq-list{max-width:640px;}
+.faq-item{border-bottom:1px solid #ddd;}
+.fq{display:flex;justify-content:space-between;align-items:center;padding:1rem 0;cursor:pointer;font-size:14px;font-weight:600;color:#111;gap:12px;}
+.fq .ico{font-size:18px;color:#C9A84C;transition:transform .25s;flex-shrink:0;}
+.fa{display:none;padding-bottom:1rem;font-size:13.5px;color:#666;line-height:1.7;}
+.faq-item.open .fa{display:block;}
+.faq-item.open .fq .ico{transform:rotate(45deg);}
+.pay-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:2rem;}
+@media(max-width:500px){.pay-grid{grid-template-columns:1fr;}}
+.pay-card{background:#fff;border:1px solid #ddd;border-radius:10px;padding:1.6rem;}
+.pay-card h4{font-size:.9rem;font-weight:700;color:#111;margin-bottom:1rem;}
+.pd{font-size:13px;color:#555;margin-bottom:4px;line-height:1.6;}
+.pd strong{color:#111;}
+.banks{display:flex;flex-wrap:wrap;gap:5px;margin-top:1rem;}
+.bank{font-size:11px;font-weight:600;background:#f5f3ee;border:1px solid #ddd;border-radius:4px;padding:4px 10px;color:#555;}
+.mo{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.75);z-index:999;justify-content:center;align-items:center;}
+.mo.active{display:flex;}
+.md{background:#fff;border-radius:12px;padding:2rem;max-width:440px;width:90%;position:relative;}
+.md h3{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:900;color:#111;margin-bottom:.4rem;}
+.md>p{font-size:14px;color:#666;margin-bottom:1.2rem;line-height:1.6;}
+.md input,.md textarea{width:100%;padding:11px 13px;border-radius:6px;border:1px solid #ddd;font-size:14px;font-family:'Inter',sans-serif;margin-bottom:10px;color:#111;outline:none;}
+.md input:focus,.md textarea:focus{border-color:#C9A84C;}
+.md textarea{min-height:90px;resize:vertical;}
+.md-btn{width:100%;background:#C9A84C;color:#111;padding:13px;border-radius:6px;border:none;font-size:15px;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif;transition:background .2s;}
+.md-btn:hover{background:#e8c96a;}
+.md-close{position:absolute;top:14px;right:18px;background:none;border:none;font-size:22px;cursor:pointer;color:#aaa;}
+.md-ok{display:none;margin-top:10px;color:#C9A84C;font-size:14px;font-weight:600;text-align:center;}
+footer{background:#0a0a0a;padding:1.5rem 2rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;border-top:1px solid #1a1a1a;}
+.f-logo{font-family:'Playfair Display',serif;font-weight:900;font-size:1.1rem;color:#C9A84C;}
+footer p{font-size:12px;color:#555;}
+.f-nav{display:flex;gap:16px;flex-wrap:wrap;}
+.f-nav a{font-size:12px;color:#555;transition:color .2s;}
+.f-nav a:hover{color:#C9A84C;}
+</style>
+</head>
+<body>
+<div class="mo" id="qm"><div class="md"><button class="md-close" onclick="cm('qm')">&times;</button><h3>Үнэгүй санал авах</h3><p>Мэдээллээ үлдээгээрэй, 24 цагийн дотор холбогдоно.</p><input type="text" placeholder="Таны нэр *" id="qn"><input type="email" placeholder="Имэйл хаяг *" id="qe"><input type="tel" placeholder="Утасны дугаар"><textarea placeholder="Төслийнхөө талаар..."></textarea><button class="md-btn" onclick="sq()">Илгээх</button><div class="md-ok" id="qs">✓ Амжилттай!</div></div></div>
+<nav>
+  <a class="logo" href="index (7).html">LeadJeatt</a>
+  <div class="nav-links"><a href="index (7).html">Нүүр</a><a href="services.html">Үйлчилгээ</a><a href="portfolio.html">Ажлууд</a><a href="pricing.html" class="active">Үнэ</a><a href="blog.html">Блог</a><a href="contact.html">Холбоо барих</a></div>
+  <div class="nav-right"><a class="nav-login" href="login.html">👤 Нэвтрэх</a><a class="nav-cta" href="#" onclick="om('qm');return false;">Үнийн санал авах</a></div>
+</nav>
+<div class="page-hero"><h1>Тодорхой, <em>ил тод үнэ</em></h1><p>Нуугдмал төлбөргүй. Төсөлдөө тохирох багцыг сонгоорой.</p></div>
+<div class="wrap">
+  <div class="special"><span style="font-size:1.4rem;">🔥</span><p>Энэ сарын тусгай санал — <span>Бизнес багцад 20% хямдрал.</span> Энэ сард ердөө 2 байр үлдлээ.</p></div>
+  <div class="plan-grid">
+    <div class="plan"><div style="font-size:1.5rem;margin-bottom:.5rem;">🚀</div><h3>Эхлэгч</h3><div class="plan-price">₮1,799,999<small> нэг удаа</small></div><p>Цэвэрхэн онлайн хаяг хэрэгтэй жижиг бизнес, фрилансерт.</p><ul><li>3 хүртэл хуудас</li><li>Мобайл дэлгэцэд тохирсон</li><li>Холбоо барих маягт</li><li>1 удаа засварлах</li></ul><button class="plan-btn" onclick="om('qm')">Эхлэх</button></div>
+    <div class="plan feat"><div class="plan-badge">Хамгийн их сонгогддог</div><div style="font-size:1.5rem;margin-bottom:.5rem;">⭐</div><h3>Бизнес</h3><div class="plan-price">₮3,599,999<small> нэг удаа</small></div><div class="plan-note">Энэ сард ердөө 2 байр үлдлээ</div><p>Бүрэн вэбсайт хэрэгтэй өсч буй бизнесүүдэд.</p><ul><li>8 хүртэл хуудас</li><li>SEO оновчлол</li><li>Блог тохиргоо</li><li>3 удаа засварлах</li><li>1 сарын дэмжлэг</li></ul><button class="plan-btn" onclick="om('qm')">Эхлэх</button></div>
+    <div class="plan"><div style="font-size:1.5rem;margin-bottom:.5rem;">🛒</div><h3>И-Коммерс</h3><div class="plan-price">₮6,469,999<small> нэг удаа</small></div><p>Онлайнаар шууд зарж эхлэхэд бүх зүйлтэй.</p><ul><li>Хязгааргүй бүтээгдэхүүн</li><li>Төлбөр хийх систем</li><li>Захиалга удирдлага</li><li>3 сарын дэмжлэг</li></ul><button class="plan-btn" onclick="om('qm')">Эхлэх</button></div>
+  </div>
+  <div class="sec-label" style="margin-bottom:1rem;">Нэмэлт үйлчилгээ</div>
+  <div class="addon-grid">
+    <div class="addon"><span class="addon-n">🎨 Лого дизайн</span><span class="addon-p">+₮300,000</span></div>
+    <div class="addon"><span class="addon-n">🔍 Нэмэлт SEO</span><span class="addon-p">+₮200,000</span></div>
+    <div class="addon"><span class="addon-n">🌐 МН+EN хэл</span><span class="addon-p">+₮300,000</span></div>
+    <div class="addon"><span class="addon-n">✨ Анимейшн</span><span class="addon-p">+₮250,000</span></div>
+    <div class="addon"><span class="addon-n">🛵 Хүргэлтийн систем</span><span class="addon-p">+₮400,000</span></div>
+    <div class="addon"><span class="addon-n">🛡 Сарын засвар</span><span class="addon-p">+₮90,000/сар</span></div>
+  </div>
+  <div class="sec-label">Төлбөр хийх</div>
+  <h2 class="sec-title">Төлбөрийн аргууд</h2>
+  <div class="pay-grid">
+    <div class="pay-card"><h4>🏦 Банкны шилжүүлэг</h4><div class="pd">Дансны дугаар: <strong>428036691</strong></div><div class="pd">Эзэмшигч: <strong>Дөлгөөн Үүрдмандах</strong></div><div class="pd">Банк: <strong>ТДБ</strong></div><div class="banks"><span class="bank">Хаан</span><span class="bank">Голомт</span><span class="bank">Хас</span><span class="bank">Тиэр</span><span class="bank">ТДБ</span><span class="bank">Төрийн</span><span class="bank">Ариг</span></div></div>
+    <div class="pay-card"><h4>📱 QPay</h4><div class="pd"><strong>LeadJeatt</strong> гэж QPay дээр хайна уу.</div><div class="pd" style="margin-top:8px;color:#aaa;font-size:12px;">Төлбөр хийсний дараа скриншот авч WhatsApp руу илгээнэ үү.</div></div>
+  </div>
+  <div style="margin-top:2.5rem;">
+    <div class="sec-label">Түгээмэл асуултууд</div>
+    <h2 class="sec-title">Асуулт &amp; хариулт</h2>
+    <div class="faq-list">
+      <div class="faq-item"><div class="fq" onclick="tf(this)">Урьдчилгаа хэд байх вэ?<span class="ico">+</span></div><div class="fa">Нийт дүнгийн 50%-ийг урьдчилгаа болгон авна. Үлдсэн 50%-ийг сайт нээгдэхэд төлнө.</div></div>
+      <div class="faq-item"><div class="fq" onclick="tf(this)">Хостинг, домэйн оруулсан уу?<span class="ico">+</span></div><div class="fa">Бизнес болон И-Коммерс багцад 1 жилийн хостинг, домэйн оролцсон байна.</div></div>
+      <div class="faq-item"><div class="fq" onclick="tf(this)">Дизайн таалагдахгүй бол яах вэ?<span class="ico">+</span></div><div class="fa">Та бүрэн сэтгэл хангалуун болтол хязгааргүй өөрчлөлт хийнэ.</div></div>
+      <div class="faq-item"><div class="fq" onclick="tf(this)">Сайт бүтээхэд хэр удах вэ?<span class="ico">+</span></div><div class="fa">Нүүр хуудас 3–5 хоног, бизнесийн сайт 1–2 долоо хоног, онлайн дэлгүүр 2–4 долоо хоног.</div></div>
+    </div>
+  </div>
+</div>
+<footer>
+  <div class="f-logo">LeadJeatt</div>
+  <div class="f-nav"><a href="index (7).html">Нүүр</a><a href="services.html">Үйлчилгээ</a><a href="portfolio.html">Ажлууд</a><a href="pricing.html">Үнэ</a><a href="blog.html">Блог</a><a href="contact.html">Холбоо барих</a></div>
+  <p>© 2026 LeadJeatt · <a href="mailto:LeadJeatt@gmail.com" style="color:#C9A84C;">LeadJeatt@gmail.com</a></p>
+</footer>
+<script>
+function om(id){document.getElementById(id).classList.add('active');}
+function cm(id){document.getElementById(id).classList.remove('active');}
+document.getElementById('qm').addEventListener('click',function(e){if(e.target===this)cm('qm');});
+function sq(){var n=document.getElementById('qn').value.trim(),e=document.getElementById('qe').value.trim();if(!n||!e){alert('Нэр болон имэйлээ оруулна уу.');return;}document.getElementById('qs').style.display='block';setTimeout(function(){cm('qm');document.getElementById('qs').style.display='none';},2500);}
+function tf(el){el.parentElement.classList.toggle('open');}
+</script>
+</body></html>

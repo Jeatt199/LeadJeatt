@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>LeadJeatt — Мэргэжлийн Вэб Дизайн</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{--gold:#C9A84C;--gold2:#e8c96a;--dark:#111;--off:#f5f3ee;}
+html{scroll-behavior:smooth;}
+body{font-family:'Inter',sans-serif;background:#fff;color:#111;}
+a{text-decoration:none;}
+
+/* NAV */
+nav{background:#111;display:flex;justify-content:space-between;align-items:center;padding:1rem 2rem;position:sticky;top:0;z-index:100;gap:12px;flex-wrap:wrap;}
+.logo{font-family:'Playfair Display',serif;font-weight:900;font-size:1.4rem;color:#C9A84C;letter-spacing:1px;}
+.nav-links{display:flex;gap:1.6rem;align-items:center;flex-wrap:wrap;}
+.nav-links a{color:#ccc;font-size:14px;font-weight:500;transition:color .2s;}
+.nav-links a:hover,.nav-links a.active{color:#C9A84C;}
+.nav-right{display:flex;align-items:center;gap:10px;}
+.nav-login{color:#aaa;font-size:13px;padding:7px 14px;border:1px solid #333;border-radius:6px;transition:all .2s;}
+.nav-login:hover{border-color:#C9A84C;color:#C9A84C;}
+.nav-cta{background:#C9A84C;color:#111;padding:9px 20px;border-radius:6px;font-size:14px;font-weight:700;transition:background .2s;}
+.nav-cta:hover{background:#e8c96a;}
+@media(max-width:720px){.nav-links{display:none;}}
+
+/* HERO */
+.hero{background:#111;padding:6rem 2rem 5rem;text-align:center;}
+.badge{display:inline-block;border:1px solid #C9A84C;color:#C9A84C;font-size:12px;font-weight:600;padding:5px 16px;border-radius:20px;margin-bottom:1.5rem;letter-spacing:1px;text-transform:uppercase;}
+.hero h1{font-family:'Playfair Display',serif;font-size:clamp(2rem,5vw,3.4rem);font-weight:900;color:#fff;line-height:1.1;letter-spacing:-1px;margin-bottom:1.2rem;}
+.hero h1 em{color:#C9A84C;font-style:normal;}
+.hero>p{font-size:1rem;color:#aaa;max-width:520px;margin:0 auto 2rem;line-height:1.7;}
+.hero-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+.btn-gold{background:#C9A84C;color:#111;padding:13px 28px;border-radius:6px;font-size:15px;font-weight:700;transition:background .2s;display:inline-block;}
+.btn-gold:hover{background:#e8c96a;}
+.btn-outline{background:transparent;color:#C9A84C;padding:12px 28px;border-radius:6px;font-size:15px;font-weight:600;border:1px solid #C9A84C;transition:all .2s;display:inline-block;}
+.btn-outline:hover{background:#C9A84C;color:#111;}
+
+/* STATS */
+.stats{display:flex;justify-content:center;background:#C9A84C;flex-wrap:wrap;}
+.stat{text-align:center;padding:1.5rem 2.5rem;border-right:1px solid rgba(17,17,17,.2);}
+.stat:last-child{border-right:none;}
+.stat-num{font-family:'Playfair Display',serif;font-size:2rem;font-weight:900;color:#111;}
+.stat-label{font-size:12px;color:#333;margin-top:2px;font-weight:600;text-transform:uppercase;letter-spacing:.5px;}
+
+/* CLIENTS */
+.clients{background:#f9f7f2;border-top:1px solid #ede9df;border-bottom:1px solid #ede9df;padding:1.4rem 2rem;text-align:center;}
+.clients-label{font-size:11px;font-weight:700;color:#aaa;text-transform:uppercase;letter-spacing:2px;margin-bottom:.8rem;}
+.clients-row{display:flex;flex-wrap:wrap;justify-content:center;gap:8px 20px;}
+.clients-row span{font-size:13px;font-weight:600;color:#888;}
+
+/* SHARED */
+.wrap{max-width:960px;margin:0 auto;padding:5rem 2rem;}
+.sec-label{font-size:11px;font-weight:700;color:#C9A84C;text-transform:uppercase;letter-spacing:2px;margin-bottom:.5rem;}
+.sec-title{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,3vw,2.4rem);font-weight:900;color:#111;margin-bottom:.7rem;}
+.sec-sub{font-size:.95rem;color:#666;margin-bottom:2.5rem;max-width:500px;line-height:1.7;}
+.dark-wrap .sec-title{color:#fff;}
+.dark-wrap .sec-sub{color:#888;}
+
+/* SERVICES GRID */
+.svc-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:16px;}
+.svc{background:#111;border-radius:10px;padding:1.5rem;border:1px solid #222;transition:border-color .2s;}
+.svc:hover{border-color:#C9A84C;}
+.svc-ico{font-size:1.6rem;margin-bottom:1rem;}
+.svc h3{font-size:.95rem;font-weight:700;color:#fff;margin-bottom:6px;}
+.svc p{font-size:13px;color:#888;line-height:1.6;}
+
+/* PROCESS */
+.steps{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));margin-top:2rem;}
+.step{padding:1.5rem;border-right:1px solid #ddd;background:#fff;}
+.step:last-child{border-right:none;}
+.step-n{font-family:'Playfair Display',serif;font-size:2.5rem;font-weight:900;color:#C9A84C;opacity:.45;line-height:1;}
+.step h4{font-size:.9rem;font-weight:700;color:#111;margin:.4rem 0;}
+.step p{font-size:13px;color:#666;line-height:1.5;}
+
+/* FOUNDER */
+.founder{background:#1a1a1a;border:1px solid #2a2a2a;border-radius:12px;padding:2rem;display:flex;gap:2rem;flex-wrap:wrap;}
+.f-av{width:72px;height:72px;border-radius:50%;background:#C9A84C;display:flex;align-items:center;justify-content:center;font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:900;color:#111;flex-shrink:0;}
+.f-body{flex:1;min-width:180px;}
+.f-name{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:900;color:#fff;margin-bottom:3px;}
+.f-role{font-size:12px;color:#C9A84C;font-weight:600;text-transform:uppercase;letter-spacing:1px;margin-bottom:.9rem;}
+.f-quote{font-size:14px;color:#aaa;line-height:1.7;margin-bottom:1rem;}
+.f-stats{display:flex;gap:1.5rem;flex-wrap:wrap;}
+.fs{text-align:center;}
+.fs-n{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:900;color:#C9A84C;}
+.fs-l{font-size:11px;color:#555;}
+
+/* PORTFOLIO PREVIEW */
+.port-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:16px;}
+.pc{background:#1a1a1a;border:1px solid #222;border-radius:10px;overflow:hidden;transition:border-color .25s,transform .25s;}
+.pc:hover{border-color:#C9A84C;transform:translateY(-3px);}
+.pc-thumb{height:130px;display:flex;align-items:center;justify-content:center;font-size:2.4rem;background:#222;position:relative;}
+.pc-tag{position:absolute;bottom:8px;left:10px;background:#C9A84C;color:#111;font-size:11px;font-weight:700;padding:3px 10px;border-radius:20px;}
+.pc-body{padding:1rem 1.2rem;}
+.pc-body h3{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:#fff;margin-bottom:3px;}
+.pc-body p{font-size:12.5px;color:#666;line-height:1.5;}
+
+/* TESTIMONIALS */
+.tgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:16px;}
+.tc{background:#1a1a1a;border:1px solid #222;border-radius:10px;padding:1.6rem;transition:border-color .2s;}
+.tc:hover{border-color:#C9A84C;}
+.tc-stars{color:#C9A84C;letter-spacing:2px;margin-bottom:.7rem;font-size:13px;}
+.tc-text{font-size:13.5px;color:#ccc;line-height:1.7;margin-bottom:1.2rem;}
+.tc-author{display:flex;align-items:center;gap:10px;}
+.tc-av{width:36px;height:36px;border-radius:50%;background:#C9A84C;display:flex;align-items:center;justify-content:center;font-weight:700;color:#111;font-size:.9rem;flex-shrink:0;}
+.tc-name{font-size:13px;font-weight:700;color:#fff;}
+.tc-role{font-size:11px;color:#555;}
+
+/* BLOG */
+.blog-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:16px;}
+.bc{background:#fff;border:1px solid #eee;border-radius:10px;padding:1.4rem;transition:border-color .2s,box-shadow .2s;}
+.bc:hover{border-color:#C9A84C;box-shadow:0 4px 16px rgba(201,168,76,.08);}
+.bc-ico{font-size:1.8rem;margin-bottom:.8rem;}
+.bc h3{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;color:#111;margin-bottom:.4rem;line-height:1.4;}
+.bc p{font-size:12px;color:#aaa;}
+
+/* FREE OFFER */
+.free-list{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:8px;margin-bottom:2rem;text-align:left;}
+.fi{display:flex;align-items:center;gap:8px;font-size:13.5px;color:#ccc;}
+.fi .ck{color:#C9A84C;font-weight:700;font-size:1rem;}
+
+/* REFERRAL */
+.ref-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:2rem 0;}
+@media(max-width:500px){.ref-steps{grid-template-columns:1fr;}}
+.rs{background:#fff;border:1px solid #ddd;border-radius:10px;padding:1.4rem;text-align:center;}
+.rs .ico{font-size:2rem;margin-bottom:.6rem;}
+.rs h4{font-size:.9rem;font-weight:700;color:#111;margin-bottom:4px;}
+.rs p{font-size:12px;color:#777;line-height:1.5;}
+.ref-reward{background:#C9A84C;border-radius:10px;padding:1.2rem 2rem;display:inline-block;}
+.ref-reward p{font-size:13px;font-weight:700;color:#111;}
+.ref-reward .big{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:900;color:#111;}
+
+/* CONTACT */
+.cg{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px;}
+@media(max-width:500px){.cg{grid-template-columns:1fr;}}
+.ci{width:100%;padding:12px 14px;border-radius:6px;border:1px solid #333;background:#1a1a1a;color:#fff;font-size:14px;font-family:'Inter',sans-serif;outline:none;}
+.ci:focus{border-color:#C9A84C;}
+.ci::placeholder{color:#555;}
+select.ci{color:#888;cursor:pointer;}
+select.ci option{background:#1a1a1a;color:#fff;}
+textarea.ci{min-height:100px;resize:vertical;margin-bottom:12px;}
+.c-submit{width:100%;background:#C9A84C;color:#111;padding:14px;border-radius:6px;border:none;font-size:15px;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif;transition:background .2s;}
+.c-submit:hover{background:#e8c96a;}
+.c-ok{display:none;background:#1a1a1a;border:1px solid #C9A84C;border-radius:8px;padding:1rem;margin-top:12px;color:#C9A84C;font-weight:600;font-size:14px;}
+.c-err{display:none;background:#1a1a1a;border:1px solid #e25;border-radius:8px;padding:1rem;margin-top:12px;color:#e25;font-weight:600;font-size:14px;}
+.c-info{display:flex;justify-content:center;gap:2rem;margin-top:2rem;flex-wrap:wrap;}
+.c-info a{color:#C9A84C;font-size:14px;display:flex;align-items:center;gap:6px;}
+.c-info a:hover{color:#e8c96a;}
+
+/* PAYMENT */
+.pay-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:2rem;}
+@media(max-width:500px){.pay-grid{grid-template-columns:1fr;}}
+.pay-card{background:#fff;border:1px solid #ddd;border-radius:10px;padding:1.6rem;}
+.pay-card h4{font-size:.9rem;font-weight:700;color:#111;margin-bottom:1rem;display:flex;align-items:center;gap:8px;}
+.pd{font-size:13px;color:#555;margin-bottom:4px;line-height:1.6;}
+.pd strong{color:#111;}
+.banks{display:flex;flex-wrap:wrap;gap:5px;margin-top:1rem;}
+.bank{font-size:11px;font-weight:600;background:#f5f3ee;border:1px solid #ddd;border-radius:4px;padding:4px 10px;color:#555;}
+
+/* ABOUT */
+.av-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-top:2rem;}
+.av{background:#1a1a1a;border:1px solid #222;border-radius:10px;padding:1.2rem;}
+.av .ico{font-size:1.4rem;margin-bottom:.6rem;}
+.av h4{font-size:.9rem;font-weight:700;color:#fff;margin-bottom:4px;}
+.av p{font-size:12.5px;color:#666;line-height:1.5;}
+
+/* MODAL */
+.mo{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.75);z-index:999;justify-content:center;align-items:center;}
+.mo.active{display:flex;}
+.md{background:#fff;border-radius:12px;padding:2rem;max-width:440px;width:90%;position:relative;}
+.md h3{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:900;color:#111;margin-bottom:.4rem;}
+.md>p{font-size:14px;color:#666;margin-bottom:1.2rem;line-height:1.6;}
+.md input,.md textarea{width:100%;padding:11px 13px;border-radius:6px;border:1px solid #ddd;font-size:14px;font-family:'Inter',sans-serif;margin-bottom:10px;color:#111;outline:none;}
+.md input:focus,.md textarea:focus{border-color:#C9A84C;}
+.md textarea{min-height:90px;resize:vertical;}
+.md-btn{width:100%;background:#C9A84C;color:#111;padding:13px;border-radius:6px;border:none;font-size:15px;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif;transition:background .2s;}
+.md-btn:hover{background:#e8c96a;}
+.md-close{position:absolute;top:14px;right:18px;background:none;border:none;font-size:22px;cursor:pointer;color:#aaa;}
+.md-close:hover{color:#111;}
+.md-ok{display:none;margin-top:10px;color:#C9A84C;font-size:14px;font-weight:600;text-align:center;}
+
+/* FAQ */
+.faq-list{max-width:640px;}
+.faq-item{border-bottom:1px solid #ddd;}
+.fq{display:flex;justify-content:space-between;align-items:center;padding:1rem 0;cursor:pointer;font-size:14px;font-weight:600;color:#111;gap:12px;}
+.fq .ico{font-size:18px;color:#C9A84C;transition:transform .25s;flex-shrink:0;}
+.fa{display:none;padding-bottom:1rem;font-size:13.5px;color:#666;line-height:1.7;}
+.faq-item.open .fa{display:block;}
+.faq-item.open .fq .ico{transform:rotate(45deg);}
+
+/* CALC */
+.calc-wrap{display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:center;}
+@media(max-width:640px){.calc-wrap{grid-template-columns:1fr;gap:2rem;}}
+.calc-card{background:#fff;border:1px solid #ddd;border-radius:12px;padding:2.5rem;}
+input[type=range]{-webkit-appearance:none;appearance:none;width:100%;height:5px;background:#ddd;border-radius:3px;outline:none;cursor:pointer;margin:8px 0;}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:18px;height:18px;background:#C9A84C;border-radius:50%;cursor:pointer;box-shadow:0 0 0 3px rgba(201,168,76,.2);}
+input[type=range]::-moz-range-thumb{width:18px;height:18px;background:#C9A84C;border-radius:50%;cursor:pointer;border:none;}
+.sl-label{display:flex;justify-content:space-between;font-size:13px;font-weight:700;color:#111;margin-top:1.4rem;margin-bottom:4px;}
+.sl-label span{color:#C9A84C;font-family:'Playfair Display',serif;font-size:1rem;}
+.sl-range{display:flex;justify-content:space-between;font-size:11px;color:#aaa;margin-top:3px;}
+.calc-note{font-size:12px;color:#888;background:#f5f3ee;border-left:3px solid #C9A84C;padding:8px 12px;border-radius:0 6px 6px 0;margin-top:1.2rem;}
+.r-box{background:#f5f3ee;border:1px solid #ddd;border-radius:8px;padding:1.1rem;text-align:center;margin-bottom:10px;}
+.r-box.dark{background:#111;border-color:#C9A84C;}
+.r-label{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#aaa;margin-bottom:3px;}
+.r-val{font-family:'Playfair Display',serif;font-size:1.7rem;font-weight:900;color:#111;}
+.r-box.dark .r-val{color:#C9A84C;}
+.r-hl{background:#C9A84C;border-radius:8px;padding:10px;text-align:center;margin-bottom:10px;}
+.r-hl .big{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:900;color:#111;}
+.r-hl p{font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:1px;color:#111;}
+.r-btn{width:100%;background:#C9A84C;color:#111;padding:13px;border-radius:6px;border:none;font-size:14px;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif;transition:background .2s;margin-top:10px;}
+.r-btn:hover{background:#e8c96a;}
+
+/* PRICING */
+.special{background:#111;border:1px solid #C9A84C;border-radius:10px;padding:1rem 1.5rem;display:flex;align-items:center;gap:12px;margin-bottom:2rem;flex-wrap:wrap;}
+.special p{font-size:13.5px;color:#fff;font-weight:600;}
+.special p span{color:#C9A84C;}
+.plan-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:16px;margin-bottom:2rem;}
+.plan{background:#fff;border:1px solid #ddd;border-radius:10px;padding:1.6rem;}
+.plan.feat{border:2px solid #C9A84C;background:#fffdf5;}
+.plan-badge{background:#C9A84C;color:#111;font-size:11px;padding:3px 12px;border-radius:20px;display:inline-block;margin-bottom:.7rem;font-weight:700;}
+.plan h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:#111;margin-bottom:4px;}
+.plan-price{font-family:'Playfair Display',serif;font-size:1.8rem;font-weight:900;color:#111;margin:.5rem 0;}
+.plan-price small{font-size:.8rem;font-weight:400;color:#888;font-family:'Inter',sans-serif;}
+.plan-note{font-size:12px;color:#C9A84C;font-weight:600;margin-bottom:.8rem;}
+.plan>p{font-size:13px;color:#666;margin-bottom:1rem;line-height:1.5;}
+.plan ul{list-style:none;margin-bottom:1.2rem;}
+.plan ul li{font-size:13px;color:#555;padding:4px 0;display:flex;align-items:center;gap:8px;}
+.plan ul li::before{content:'';width:6px;height:6px;border-radius:50%;background:#C9A84C;flex-shrink:0;}
+.plan-btn{width:100%;padding:11px;border-radius:6px;font-size:14px;cursor:pointer;font-family:'Inter',sans-serif;font-weight:600;border:1px solid #ddd;background:transparent;color:#111;transition:all .2s;}
+.plan-btn:hover{border-color:#C9A84C;color:#C9A84C;}
+.plan.feat .plan-btn{background:#C9A84C;color:#111;border-color:#C9A84C;}
+.plan.feat .plan-btn:hover{background:#e8c96a;}
+.addon-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px;}
+.addon{background:#fff;border:1px solid #eee;border-radius:8px;padding:.9rem 1rem;display:flex;justify-content:space-between;align-items:center;}
+.addon-n{font-size:13px;color:#555;display:flex;align-items:center;gap:6px;}
+.addon-p{font-size:13px;font-weight:700;color:#C9A84C;}
+
+/* LIVE DOT */
+.live{display:flex;align-items:center;gap:6px;font-size:12px;color:#666;}
+.dot{width:7px;height:7px;border-radius:50%;background:#4caf50;animation:blink 1.5s infinite;}
+@keyframes blink{0%,100%{opacity:1;}50%{opacity:.3;}}
+
+/* FOOTER */
+footer{background:#0a0a0a;padding:1.5rem 2rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;border-top:1px solid #1a1a1a;}
+.f-logo{font-family:'Playfair Display',serif;font-weight:900;font-size:1.1rem;color:#C9A84C;}
+footer p{font-size:12px;color:#555;}
+.f-nav{display:flex;gap:16px;flex-wrap:wrap;}
+.f-nav a{font-size:12px;color:#555;transition:color .2s;}
+.f-nav a:hover{color:#C9A84C;}
+</style>
+</head>
+<body>
+
+<!-- MODAL -->
+<div class="mo" id="qm">
+  <div class="md">
+    <button class="md-close" onclick="cm('qm')">&times;</button>
+    <h3>Үнэгүй санал авах</h3>
+    <p>Мэдээллээ үлдээгээрэй, 24 цагийн дотор холбогдоно.</p>
+    <input type="text" placeholder="Таны нэр *" id="qn">
+    <input type="email" placeholder="Имэйл хаяг *" id="qe">
+    <input type="tel" placeholder="Утасны дугаар">
+    <textarea placeholder="Төслийнхөө талаар..."></textarea>
+    <button class="md-btn" onclick="sq()">Илгээх</button>
+    <div class="md-ok" id="qs">✓ Амжилттай! Удахгүй холбогдоно.</div>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav>
+  <a class="logo" href="index (7).html">LeadJeatt</a>
+  <div class="nav-links">
+    <a href="index (7).html" class="active">Нүүр</a>
+    <a href="services.html">Үйлчилгээ</a>
+    <a href="portfolio.html">Ажлууд</a>
+    <a href="pricing.html">Үнэ</a>
+    <a href="blog.html">Блог</a>
+    <a href="contact.html">Холбоо барих</a>
+  </div>
+  <div class="nav-right">
+    <a class="nav-login" href="login.html">👤 Нэвтрэх</a>
+    <a class="nav-cta" href="#" onclick="om('qm');return false;">Үнийн санал авах</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="badge">Мэргэжлийн Вэб Дизайн &amp; Хөгжүүлэлт</div>
+  <h1>Таны бизнесийг <em>өсгөх вэбсайт</em> бид бүтээнэ</h1>
+  <p>Зочдыг хэрэглэгч болгодог хурдан, гоёмсог вэбсайтууд. Нүүр хуудаснаас онлайн дэлгүүр хүртэл — бид бүхнийг шийдэнэ.</p>
+  <div class="hero-btns">
+    <a class="btn-gold" href="#" onclick="om('qm');return false;">Төслөө эхлүүлэх</a>
+    <a class="btn-outline" href="services.html">Бидний үйлчилгээ</a>
+  </div>
+</div>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stat"><div class="stat-num">50+</div><div class="stat-label">Хүргэсэн төсөл</div></div>
+  <div class="stat"><div class="stat-num">48ц</div><div class="stat-label">Анхны загвар</div></div>
+  <div class="stat"><div class="stat-num">100%</div><div class="stat-label">Сэтгэл ханамж</div></div>
+  <div class="stat"><div class="stat-num">5★</div><div class="stat-label">Дундаж үнэлгээ</div></div>
+</div>
+
+<!-- CLIENTS -->
+<div class="clients">
+  <div class="clients-label">Бидэнд итгэдэг брэндүүд</div>
+  <div class="clients-row">
+    <span>🍽 Монгол Фуд</span><span>🚚 Эрдэнэт Трейд</span><span>🏪 Номин Груп</span>
+    <span>☕ Туяа Кафе</span><span>💪 Баянзүрх Фитнес</span><span>💻 АйТи Солюшн</span>
+    <span>🏢 Голден Гейт</span><span>🛒 DataMon</span><span>🏠 Эрдэнэт Хаус</span><span>👗 Зула Загвар</span>
+  </div>
+</div>
+
+<!-- SERVICES PREVIEW -->
+<div class="wrap">
+  <div class="sec-label">Бидний санал болгох зүйл</div>
+  <h2 class="sec-title">Хэрэгцээ бүрт зориулсан үйлчилгээ</h2>
+  <p class="sec-sub">Эхлэгч ч бай, өргөжиж буй ч бай — бид танд тохирох шийдлийг санал болгоно.</p>
+  <div class="svc-grid">
+    <div class="svc"><div class="svc-ico">🖥</div><h3>Нүүр хуудас</h3><p>Хөрвөлтөд суурилсан нэг хуудасны сайт.</p></div>
+    <div class="svc"><div class="svc-ico">🌐</div><h3>Бизнесийн вэбсайт</h3><p>Тухай, үйлчилгээ, блог, холбоо барих хуудас бүхий бүрэн сайт.</p></div>
+    <div class="svc"><div class="svc-ico">🛒</div><h3>Онлайн дэлгүүр</h3><p>Бүтээгдэхүүн, сагс, төлбөр хийх системтэй e-commerce.</p></div>
+    <div class="svc"><div class="svc-ico">📈</div><h3>SEO &amp; хурд</h3><p>Google-д өндөр эрэмбэлэгдэх, хурдан ажиллахаар оновчлоно.</p></div>
+    <div class="svc"><div class="svc-ico">🛡</div><h3>Засвар үйлчилгээ</h3><p>Сайтыг аюулгүй байлгах сарын тогтмол хяналт.</p></div>
+    <div class="svc"><div class="svc-ico">✨</div><h3>Дизайн шинэчлэл</h3><p>Хуучин сайтыг орчин үеийн шинэ дизайнаар сэргээнэ.</p></div>
+  </div>
+  <div style="text-align:center;margin-top:2rem;"><a class="btn-outline" href="services.html">Бүх үйлчилгээг үзэх →</a></div>
+</div>
+
+<!-- PROCESS -->
+<div style="background:#f5f3ee;padding:5rem 2rem;">
+  <div style="max-width:960px;margin:0 auto;">
+    <div class="sec-label">Яаж ажилладаг вэ</div>
+    <h2 class="sec-title">4 алхамаар санаанаас амьд сайт болтол</h2>
+    <div class="steps">
+      <div class="step"><div class="step-n">01</div><h4>Танилцах уулзалт</h4><p>Бизнес, зорилго, үзэгчдийн талаар ярилцана.</p></div>
+      <div class="step"><div class="step-n">02</div><h4>Дизайны загвар</h4><p>48 цагийн дотор анхны харааны загварыг хүргэнэ.</p></div>
+      <div class="step"><div class="step-n">03</div><h4>Бүтээх &amp; хянах</h4><p>Сайтыг кодлож, таны санал хүсэлтээр боловсруулна.</p></div>
+      <div class="step"><div class="step-n">04</div><h4>Нээлтийн өдөр</h4><p>Сайт амьдарна. Техникийн бүх тохиргоог бид хариуцна.</p></div>
+    </div>
+  </div>
+</div>
+
+<!-- FOUNDER -->
+<div style="background:#111;padding:5rem 2rem;">
+  <div style="max-width:760px;margin:0 auto;">
+    <div class="sec-label dark-wrap" style="color:#C9A84C;">Бидний тухай</div>
+    <h2 class="sec-title dark-wrap" style="color:#fff;margin-bottom:1.5rem;">Founder &amp; Designer</h2>
+    <div class="founder">
+      <div class="f-av">Д</div>
+      <div class="f-body">
+        <div class="f-name">Дөлгөөн Үүрдмандах</div>
+        <div class="f-role">Founder &amp; Вэб Дизайнер · Улаанбаатар</div>
+        <p class="f-quote">"Утас дуугарах тэр мөчийн төлөө ажилладаг... Монголын жижиг бизнесүүд гайхалтай бүтээгдэхүүн зардаг, гэхдээ вэбсайт нь хүнийг огт итгүүлж чаддаггүй."</p>
+        <div class="f-stats">
+          <div class="fs"><div class="fs-n">50+</div><div class="fs-l">Төсөл</div></div>
+          <div class="fs"><div class="fs-n">4+</div><div class="fs-l">Жил</div></div>
+          <div class="fs"><div class="fs-n">48ц</div><div class="fs-l">Хүргэлт</div></div>
+          <div class="fs"><div class="fs-n">5★</div><div class="fs-l">Үнэлгээ</div></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- PORTFOLIO PREVIEW -->
+<div class="wrap" style="background:#111;max-width:100%;padding:5rem 2rem;">
+  <div style="max-width:960px;margin:0 auto;">
+    <div class="sec-label" style="color:#C9A84C;">Бодит үр дүн</div>
+    <h2 class="sec-title" style="color:#fff;">Бодит төслүүд, бодит үр дүн</h2>
+    <p class="sec-sub" style="color:#888;">Бид бүтээсэн вэбсайтуудын жишээ.</p>
+    <div class="port-grid">
+      <div class="pc"><div class="pc-thumb">🍽<span class="pc-tag">Ресторан</span></div><div class="pc-body"><h3>Нарны Хоол</h3><p>Цэс, захиалга, хүргэлтийн систем</p></div></div>
+      <div class="pc"><div class="pc-thumb">⚡<span class="pc-tag">Фитнес</span></div><div class="pc-body"><h3>IronFit</h3><p>Гишүүнчлэл, хуваарь, дасгалжуулагч</p></div></div>
+      <div class="pc"><div class="pc-thumb">👗<span class="pc-tag">Онлайн дэлгүүр</span></div><div class="pc-body"><h3>Зула Загвар</h3><p>Онлайн каталог, захиалга, хүргэлт</p></div></div>
+    </div>
+    <div style="text-align:center;margin-top:2rem;"><a class="btn-outline" href="portfolio.html">Бүх ажлуудыг үзэх →</a></div>
+  </div>
+</div>
+
+<!-- TESTIMONIALS -->
+<div style="padding:5rem 2rem;">
+  <div style="max-width:960px;margin:0 auto;">
+    <div class="sec-label">Үйлчлүүлэгчид</div>
+    <h2 class="sec-title">Бодит хүмүүс, бодит үнэлгээ</h2>
+    <div class="tgrid">
+      <div class="tc"><div class="tc-stars">★★★★★</div><p class="tc-text">"LeadJeatt маш хурдан, мэргэжлийн түвшинд сайтаа бүтээж өгсөн. Захиалга мэдэгдэхүйц нэмэгдлээ!"</p><div class="tc-author"><div class="tc-av">Б</div><div><div class="tc-name">Батбаяр Д.</div><div class="tc-role">Нарны Хоол ресторан</div></div></div></div>
+      <div class="tc"><div class="tc-stars">★★★★★</div><p class="tc-text">"Онлайн дэлгүүрийн сайтаа нээснээс хойш борлуулалт 2 дахин өслөө. Маш их баярлалаа!"</p><div class="tc-author"><div class="tc-av">З</div><div><div class="tc-name">Зулаа Т.</div><div class="tc-role">Зула Загвар</div></div></div></div>
+      <div class="tc"><div class="tc-stars">★★★★★</div><p class="tc-text">"Хуучин сайтаа шинэчлүүлсэн нь бизнесэмд маш их туслалаа. Google-д дээгүүр гарав."</p><div class="tc-author"><div class="tc-av">Г</div><div><div class="tc-name">Ганболд Э.</div><div class="tc-role">АйТи Солюшн</div></div></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- BLOG PREVIEW -->
+<div style="background:#f5f3ee;padding:5rem 2rem;">
+  <div style="max-width:960px;margin:0 auto;">
+    <div class="sec-label">Мэдлэг &amp; зөвлөгөө</div>
+    <h2 class="sec-title">Сүүлийн нийтлэлүүд</h2>
+    <div class="blog-grid">
+      <div class="bc"><div class="bc-ico">🌐</div><h3>Монголын бизнест вэбсайт яагаад зайлшгүй хэрэгтэй вэ?</h3><p>5 мин унших</p></div>
+      <div class="bc"><div class="bc-ico">📈</div><h3>Google-ийн эхний хуудсанд гарах 7 арга</h3><p>8 мин унших</p></div>
+      <div class="bc"><div class="bc-ico">🛒</div><h3>Онлайн дэлгүүр нээхэд анхаарах 5 зүйл</h3><p>6 мин унших</p></div>
+    </div>
+    <div style="text-align:center;margin-top:2rem;"><a class="btn-outline" href="blog.html">Бүх нийтлэлийг үзэх →</a></div>
+  </div>
+</div>
+
+<!-- FREE OFFER -->
+<div style="background:#111;padding:5rem 2rem;text-align:center;">
+  <div style="max-width:680px;margin:0 auto;">
+    <div class="sec-label" style="color:#C9A84C;">Онцгой санал</div>
+    <h2 style="font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:900;color:#fff;margin-bottom:.5rem;">₮0 Нүүр хуудас үнэгүй</h2>
+    <p style="font-size:.95rem;color:#aaa;max-width:520px;margin:0 auto 1.5rem;line-height:1.7;">Таны нүүр хуудсыг бид бүрэн үнэгүй хийж өгнө. Дизайн, хөгжүүлэлт, мобайл тохиргоо — бүгд оролцсон.</p>
+    <div class="free-list" style="max-width:500px;margin:0 auto 1.5rem;">
+      <div class="fi"><span class="ck">✓</span>Мэргэжлийн дизайн ҮНЭГҮЙ</div>
+      <div class="fi"><span class="ck">✓</span>Мобайл тохиргоо ҮНЭГҮЙ</div>
+      <div class="fi"><span class="ck">✓</span>Хурдан ачаалал ҮНЭГҮЙ</div>
+      <div class="fi"><span class="ck">✓</span>Холбоо барих форм ҮНЭГҮЙ</div>
+      <div class="fi"><span class="ck">✓</span>1 жилийн домайн ҮНЭГҮЙ</div>
+    </div>
+    <p style="color:#666;font-size:14px;margin-bottom:1.5rem;">Зөвхөн хостинг: <strong style="color:#fff;">₮69,900/сар</strong></p>
+    <a class="btn-gold" href="#" onclick="om('qm');return false;">Одоо эхлэх — үнэгүй →</a>
+  </div>
+</div>
+
+<!-- CONTACT SNIPPET -->
+<div style="padding:5rem 2rem;">
+  <div style="max-width:760px;margin:0 auto;text-align:center;">
+    <div class="sec-label">Холбоо барих</div>
+    <h2 class="sec-title">Вэбсайтаа бүтээхэд бэлэн үү?</h2>
+    <p class="sec-sub" style="margin:0 auto 2rem;">24 цагийн дотор үнэгүй үнийн санал хүргэнэ.</p>
+    <div style="display:flex;gap:12px;justify-content:center;flex-wrap:wrap;">
+      <a class="btn-gold" href="contact.html">Холбогдох →</a>
+      <a class="btn-outline" href="pricing.html">Үнийг харах</a>
+    </div>
+  </div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="f-logo">LeadJeatt</div>
+  <div class="f-nav">
+    <a href="index (7).html">Нүүр</a>
+    <a href="services.html">Үйлчилгээ</a>
+    <a href="portfolio.html">Ажлууд</a>
+    <a href="pricing.html">Үнэ</a>
+    <a href="blog.html">Блог</a>
+    <a href="contact.html">Холбоо барих</a>
+  </div>
+  <div class="live"><span class="dot"></span>7 хүн одоо үзэж байна</div>
+  <p>© 2026 LeadJeatt · <a href="mailto:LeadJeatt@gmail.com" style="color:#C9A84C;">LeadJeatt@gmail.com</a></p>
+</footer>
+
+<script>
+function om(id){document.getElementById(id).classList.add('active');}
+function cm(id){document.getElementById(id).classList.remove('active');}
+document.getElementById('qm').addEventListener('click',function(e){if(e.target===this)cm('qm');});
+function sq(){
+  var n=document.getElementById('qn').value.trim(),e=document.getElementById('qe').value.trim();
+  if(!n||!e){alert('Нэр болон имэйлээ оруулна уу.');return;}
+  document.getElementById('qs').style.display='block';
+  setTimeout(function(){cm('qm');document.getElementById('qs').style.display='none';},2500);
+}
+</script>
+</body>
+</html>

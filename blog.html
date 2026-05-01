@@ -1,0 +1,447 @@
+<!DOCTYPE html>
+<html lang="mn">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Блог — LeadJeatt | Вэб Дизайн Зөвлөмж</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700;900&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}html{scroll-behavior:smooth;}body{font-family:'Inter',sans-serif;background:#fff;color:#111;}a{text-decoration:none;}
+:root{--gold:#C9A84C;--gold2:#e8c96a;--dark:#111;}
+
+/* NAV */
+nav{background:#111;display:flex;justify-content:space-between;align-items:center;padding:1rem 2rem;position:sticky;top:0;z-index:100;gap:12px;flex-wrap:wrap;}
+.logo{font-family:'Playfair Display',serif;font-weight:900;font-size:1.4rem;color:#C9A84C;letter-spacing:1px;}
+.nav-links{display:flex;gap:1.6rem;align-items:center;flex-wrap:wrap;}
+.nav-links a{color:#ccc;font-size:14px;font-weight:500;transition:color .2s;}
+.nav-links a:hover,.nav-links a.active{color:#C9A84C;}
+.nav-right{display:flex;align-items:center;gap:10px;}
+.nav-login{color:#aaa;font-size:13px;padding:7px 14px;border:1px solid #333;border-radius:6px;transition:all .2s;}
+.nav-login:hover{border-color:#C9A84C;color:#C9A84C;}
+.nav-cta{background:#C9A84C;color:#111;padding:9px 20px;border-radius:6px;font-size:14px;font-weight:700;transition:background .2s;}
+.nav-cta:hover{background:#e8c96a;}
+@media(max-width:720px){.nav-links{display:none;}}
+
+/* PAGE HERO */
+.page-hero{background:#111;padding:4rem 2rem 3rem;text-align:center;}
+.page-hero .badge{display:inline-block;border:1px solid #C9A84C;color:#C9A84C;font-size:12px;font-weight:600;padding:5px 16px;border-radius:20px;margin-bottom:1rem;letter-spacing:1px;text-transform:uppercase;}
+.page-hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:900;color:#fff;margin-bottom:.8rem;}
+.page-hero h1 em{color:#C9A84C;font-style:normal;}
+.page-hero p{color:#aaa;font-size:.95rem;max-width:520px;margin:0 auto;line-height:1.7;}
+
+/* CATEGORIES */
+.cat-bar{background:#f9f7f2;border-bottom:1px solid #ede9df;padding:1rem 2rem;display:flex;justify-content:center;gap:8px;flex-wrap:wrap;}
+.cat-btn{padding:7px 18px;border-radius:20px;font-size:13px;font-weight:600;border:1px solid #ddd;background:#fff;color:#666;cursor:pointer;transition:all .2s;}
+.cat-btn:hover,.cat-btn.active{background:#C9A84C;color:#111;border-color:#C9A84C;}
+
+/* FEATURED */
+.featured-wrap{max-width:1080px;margin:0 auto;padding:3rem 2rem 0;}
+.featured-label{font-size:11px;font-weight:700;color:#C9A84C;text-transform:uppercase;letter-spacing:2px;margin-bottom:1rem;}
+.featured-card{display:grid;grid-template-columns:1fr 1fr;gap:0;background:#111;border-radius:16px;overflow:hidden;border:1px solid #222;}
+@media(max-width:700px){.featured-card{grid-template-columns:1fr;}}
+.featured-img{background:linear-gradient(135deg,#1a1a1a 0%,#2a1800 50%,#1a0f00 100%);min-height:280px;display:flex;align-items:center;justify-content:center;position:relative;padding:2rem;}
+.featured-img .big-ico{font-size:5rem;opacity:.6;}
+.featured-img .f-tag{position:absolute;top:16px;left:16px;background:#C9A84C;color:#111;font-size:11px;font-weight:700;padding:5px 14px;border-radius:20px;}
+.featured-img .f-new{position:absolute;top:16px;right:16px;background:#e25252;color:#fff;font-size:11px;font-weight:700;padding:5px 14px;border-radius:20px;}
+.featured-body{padding:2.5rem 2rem;display:flex;flex-direction:column;justify-content:center;}
+.featured-body .meta{display:flex;align-items:center;gap:10px;margin-bottom:1rem;flex-wrap:wrap;}
+.featured-body .meta span{font-size:12px;color:#666;}
+.featured-body .meta .dot{color:#333;}
+.featured-body h2{font-family:'Playfair Display',serif;font-size:1.5rem;font-weight:900;color:#fff;line-height:1.3;margin-bottom:1rem;}
+.featured-body p{font-size:14px;color:#aaa;line-height:1.7;margin-bottom:1.5rem;}
+.read-more{display:inline-flex;align-items:center;gap:6px;background:#C9A84C;color:#111;padding:11px 22px;border-radius:6px;font-size:14px;font-weight:700;transition:background .2s;}
+.read-more:hover{background:#e8c96a;}
+.read-more svg{width:14px;height:14px;fill:currentColor;}
+
+/* BLOG GRID */
+.blog-wrap{max-width:1080px;margin:0 auto;padding:3rem 2rem;}
+.blog-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:2rem;flex-wrap:wrap;gap:12px;}
+.sec-label{font-size:11px;font-weight:700;color:#C9A84C;text-transform:uppercase;letter-spacing:2px;margin-bottom:.4rem;}
+.sec-title{font-family:'Playfair Display',serif;font-size:clamp(1.4rem,3vw,2rem);font-weight:900;color:#111;}
+.sort-select{padding:8px 14px;border:1px solid #ddd;border-radius:6px;font-size:13px;color:#666;font-family:'Inter',sans-serif;outline:none;cursor:pointer;}
+.sort-select:focus{border-color:#C9A84C;}
+
+.blog-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(310px,1fr));gap:24px;}
+.bc{background:#fff;border:1px solid #eee;border-radius:12px;overflow:hidden;transition:border-color .25s,box-shadow .25s,transform .25s;}
+.bc:hover{border-color:#C9A84C;box-shadow:0 8px 32px rgba(201,168,76,.1);transform:translateY(-4px);}
+.bc-img{height:180px;display:flex;align-items:center;justify-content:center;font-size:3.5rem;position:relative;}
+.bc-cat{position:absolute;top:12px;left:12px;background:#C9A84C;color:#111;font-size:11px;font-weight:700;padding:4px 12px;border-radius:20px;}
+.bc-hot{position:absolute;top:12px;right:12px;background:#e25252;color:#fff;font-size:11px;font-weight:700;padding:4px 12px;border-radius:20px;}
+.bc-body{padding:1.4rem;}
+.bc-meta{display:flex;gap:10px;margin-bottom:.8rem;flex-wrap:wrap;}
+.bc-meta span{font-size:12px;color:#aaa;}
+.bc h3{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;color:#111;line-height:1.4;margin-bottom:.6rem;}
+.bc p{font-size:13px;color:#888;line-height:1.6;margin-bottom:1.2rem;}
+.bc-footer{display:flex;justify-content:space-between;align-items:center;}
+.bc-author{display:flex;align-items:center;gap:8px;}
+.bc-av{width:28px;height:28px;border-radius:50%;background:#C9A84C;display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:700;color:#111;}
+.bc-aname{font-size:12px;font-weight:600;color:#555;}
+.bc-link{font-size:13px;font-weight:700;color:#C9A84C;display:flex;align-items:center;gap:4px;transition:color .2s;}
+.bc-link:hover{color:#e8c96a;}
+
+/* NEWSLETTER */
+.newsletter{background:#111;margin:0;padding:4rem 2rem;text-align:center;}
+.newsletter h2{font-family:'Playfair Display',serif;font-size:clamp(1.4rem,3vw,2rem);font-weight:900;color:#fff;margin-bottom:.8rem;}
+.newsletter h2 em{color:#C9A84C;font-style:normal;}
+.newsletter p{color:#888;font-size:.9rem;margin-bottom:2rem;max-width:420px;margin-left:auto;margin-right:auto;line-height:1.7;}
+.nl-form{display:flex;gap:10px;justify-content:center;max-width:440px;margin:0 auto;flex-wrap:wrap;}
+.nl-form input{flex:1;min-width:200px;padding:12px 16px;border-radius:6px;border:1px solid #333;background:#1a1a1a;color:#fff;font-size:14px;font-family:'Inter',sans-serif;outline:none;}
+.nl-form input:focus{border-color:#C9A84C;}
+.nl-form input::placeholder{color:#555;}
+.nl-btn{background:#C9A84C;color:#111;padding:12px 22px;border-radius:6px;font-size:14px;font-weight:700;border:none;cursor:pointer;font-family:'Inter',sans-serif;transition:background .2s;white-space:nowrap;}
+.nl-btn:hover{background:#e8c96a;}
+.nl-ok{display:none;color:#C9A84C;font-size:14px;font-weight:600;margin-top:1rem;}
+
+/* SIDEBAR TOPICS */
+.topics-wrap{max-width:1080px;margin:0 auto;padding:0 2rem 4rem;}
+.topics-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;}
+.topic-card{background:#f9f7f2;border:1px solid #ede9df;border-radius:10px;padding:1.2rem;display:flex;align-items:center;gap:12px;transition:border-color .2s,background .2s;cursor:pointer;}
+.topic-card:hover{border-color:#C9A84C;background:#fff;}
+.topic-ico{font-size:1.6rem;}
+.topic-name{font-size:13px;font-weight:700;color:#111;}
+.topic-count{font-size:11px;color:#aaa;margin-top:2px;}
+
+/* MODAL */
+.mo{display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.75);z-index:999;justify-content:center;align-items:center;}
+.mo.active{display:flex;}
+.md{background:#fff;border-radius:12px;padding:2rem;max-width:440px;width:90%;position:relative;}
+.md h3{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:900;color:#111;margin-bottom:.4rem;}
+.md>p{font-size:14px;color:#666;margin-bottom:1.2rem;line-height:1.6;}
+.md input,.md textarea{width:100%;padding:11px 13px;border-radius:6px;border:1px solid #ddd;font-size:14px;font-family:'Inter',sans-serif;margin-bottom:10px;color:#111;outline:none;}
+.md input:focus,.md textarea:focus{border-color:#C9A84C;}
+.md textarea{min-height:90px;resize:vertical;}
+.md-btn{width:100%;background:#C9A84C;color:#111;padding:13px;border-radius:6px;border:none;font-size:15px;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif;transition:background .2s;}
+.md-btn:hover{background:#e8c96a;}
+.md-close{position:absolute;top:14px;right:18px;background:none;border:none;font-size:22px;cursor:pointer;color:#aaa;}
+.md-ok{display:none;margin-top:10px;color:#C9A84C;font-size:14px;font-weight:600;text-align:center;}
+
+/* FOOTER */
+footer{background:#0a0a0a;padding:1.5rem 2rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;border-top:1px solid #1a1a1a;}
+.f-logo{font-family:'Playfair Display',serif;font-weight:900;font-size:1.1rem;color:#C9A84C;}
+footer p{font-size:12px;color:#555;}
+.f-nav{display:flex;gap:16px;flex-wrap:wrap;}
+.f-nav a{font-size:12px;color:#555;transition:color .2s;}
+.f-nav a:hover{color:#C9A84C;}
+</style>
+</head>
+<body>
+
+<!-- QUOTE MODAL -->
+<div class="mo" id="qm"><div class="md"><button class="md-close" onclick="cm('qm')">&times;</button><h3>Үнэгүй санал авах</h3><p>Мэдээллээ үлдээгээрэй, 24 цагийн дотор холбогдоно.</p><input type="text" placeholder="Таны нэр *" id="qn"><input type="email" placeholder="Имэйл хаяг *" id="qe"><input type="tel" placeholder="Утасны дугаар"><textarea placeholder="Төслийнхөө талаар..."></textarea><button class="md-btn" onclick="sq()">Илгээх</button><div class="md-ok" id="qs">✓ Амжилттай!</div></div></div>
+
+<!-- NAV -->
+<nav>
+  <a class="logo" href="index.html">LeadJeatt</a>
+  <div class="nav-links">
+    <a href="index.html">Нүүр</a>
+    <a href="services.html">Үйлчилгээ</a>
+    <a href="portfolio.html">Ажлууд</a>
+    <a href="pricing.html">Үнэ</a>
+    <a href="blog.html" class="active">Блог</a>
+    <a href="contact.html">Холбоо барих</a>
+  </div>
+  <div class="nav-right">
+    <a class="nav-login" href="login.html">👤 Нэвтрэх</a>
+    <a class="nav-cta" href="#" onclick="om('qm');return false;">Үнийн санал авах</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<div class="page-hero">
+  <div class="badge">📰 LeadJeatt Блог</div>
+  <h1>Вэб дизайн, <em>бизнес өсгөх</em> зөвлөмжүүд</h1>
+  <p>Монголын бизнес эрхлэгчдэд зориулсан мэргэжлийн гарын авлага, кейс стади, практик зөвлөгөө.</p>
+</div>
+
+<!-- CATEGORIES -->
+<div class="cat-bar">
+  <button class="cat-btn active" onclick="filterCat(this,'all')">Бүгд</button>
+  <button class="cat-btn" onclick="filterCat(this,'design')">Дизайн</button>
+  <button class="cat-btn" onclick="filterCat(this,'seo')">SEO</button>
+  <button class="cat-btn" onclick="filterCat(this,'business')">Бизнес</button>
+  <button class="cat-btn" onclick="filterCat(this,'ecommerce')">E-Commerce</button>
+  <button class="cat-btn" onclick="filterCat(this,'tips')">Зөвлөмж</button>
+</div>
+
+<!-- FEATURED ARTICLE -->
+<div class="featured-wrap">
+  <div class="featured-label">⭐ Онцлох нийтлэл</div>
+  <div class="featured-card">
+    <div class="featured-img">
+      <span class="f-tag">Дизайн</span>
+      <span class="f-new">Шинэ</span>
+      <span class="big-ico">🎨</span>
+    </div>
+    <div class="featured-body">
+      <div class="meta">
+        <span>📅 2026 оны 4-р сарын 28</span>
+        <span class="dot">·</span>
+        <span>⏱ 8 мин унших</span>
+        <span class="dot">·</span>
+        <span>👁 1,240 харагдалт</span>
+      </div>
+      <h2>2026 оны вэб дизайны 7 чиг хандлага — Монголын бизнест юу хэрэгтэй вэ?</h2>
+      <p>Dark mode, micro-animations, AI-driven layouts... Дэлхийн хандлага Монголын зах зээлд хэрхэн нийцэж байгааг бид шинжлэв. Таны бизнесийн вэбсайт ямар байх ёстойг олж мэд.</p>
+      <a class="read-more" href="#">Бүтнийг нь унших <svg viewBox="0 0 16 16"><path d="M8 0l8 8-8 8-1.4-1.4L12.2 9H0V7h12.2L6.6 1.4z"/></svg></a>
+    </div>
+  </div>
+</div>
+
+<!-- ARTICLES GRID -->
+<div class="blog-wrap">
+  <div class="blog-header">
+    <div>
+      <div class="sec-label">Нийтлэлүүд</div>
+      <div class="sec-title">Сүүлийн нийтлэлүүд</div>
+    </div>
+    <select class="sort-select" onchange="sortPosts(this.value)">
+      <option value="new">Шинэ эхэндээ</option>
+      <option value="popular">Их уншигдсан</option>
+      <option value="short">Богино нийтлэл</option>
+    </select>
+  </div>
+
+  <div class="blog-grid" id="blogGrid">
+
+    <!-- POST 1 -->
+    <div class="bc" data-cat="seo">
+      <div class="bc-img" style="background:linear-gradient(135deg,#f0f4ff,#dce8ff);">
+        <span class="bc-cat">SEO</span>
+        <span style="font-size:3.5rem;">🔍</span>
+      </div>
+      <div class="bc-body">
+        <div class="bc-meta"><span>📅 2026-04-25</span><span>⏱ 5 мин</span><span>👁 890</span></div>
+        <h3>Google-д эхний байрт гарах 10 алхам — Монголын бизнесүүдэд</h3>
+        <p>Keyword судалгаа, техникийн SEO, контент стратеги. Монгол хэл дээрх хайлтад хэрхэн давамгайлах вэ?</p>
+        <div class="bc-footer">
+          <div class="bc-author"><div class="bc-av">Д</div><span class="bc-aname">Д. Батбаяр</span></div>
+          <a class="bc-link" href="#">Унших →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- POST 2 -->
+    <div class="bc" data-cat="ecommerce">
+      <div class="bc-img" style="background:linear-gradient(135deg,#fff0f0,#ffe0e0);">
+        <span class="bc-cat">E-Commerce</span>
+        <span class="bc-hot">🔥 Хит</span>
+        <span style="font-size:3.5rem;">🛒</span>
+      </div>
+      <div class="bc-body">
+        <div class="bc-meta"><span>📅 2026-04-20</span><span>⏱ 7 мин</span><span>👁 2,310</span></div>
+        <h3>QPay болон SocialPay интеграцчилал — Техникийн гарын авлага</h3>
+        <p>Монголын онлайн дэлгүүрт хэрхэн төлбөрийн систем нэмэх вэ? Алхам алхмаар тайлбарлав.</p>
+        <div class="bc-footer">
+          <div class="bc-author"><div class="bc-av">Б</div><span class="bc-aname">Б. Мөнхжаргал</span></div>
+          <a class="bc-link" href="#">Унших →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- POST 3 -->
+    <div class="bc" data-cat="business">
+      <div class="bc-img" style="background:linear-gradient(135deg,#f0fff4,#d0f0dc);">
+        <span class="bc-cat">Бизнес</span>
+        <span style="font-size:3.5rem;">📈</span>
+      </div>
+      <div class="bc-body">
+        <div class="bc-meta"><span>📅 2026-04-15</span><span>⏱ 6 мин</span><span>👁 1,560</span></div>
+        <h3>Вэбсайтгүй бизнес яагаад удаан хоцорч байна вэ? — 2026 оны судалгаа</h3>
+        <p>Монголын 1,200 бизнесийг судалсан тайлан. Онлайн байгаа vs онлайнгүй — орлогын зөрүү 340%.</p>
+        <div class="bc-footer">
+          <div class="bc-author"><div class="bc-av">О</div><span class="bc-aname">О. Энхтуяа</span></div>
+          <a class="bc-link" href="#">Унших →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- POST 4 -->
+    <div class="bc" data-cat="design">
+      <div class="bc-img" style="background:linear-gradient(135deg,#fffff0,#fff0c0);">
+        <span class="bc-cat">Дизайн</span>
+        <span style="font-size:3.5rem;">📱</span>
+      </div>
+      <div class="bc-body">
+        <div class="bc-meta"><span>📅 2026-04-10</span><span>⏱ 4 мин</span><span>👁 720</span></div>
+        <h3>Mobile-First дизайн яагаад заавал хэрэгтэй вэ? — Монголын хэрэглэгчдийн статистик</h3>
+        <p>Монголын интернет хэрэглэгчдийн 78% нь утсаараа вэб үздэг. Таны сайт тэдэнд нийцтэй юу?</p>
+        <div class="bc-footer">
+          <div class="bc-author"><div class="bc-av">Д</div><span class="bc-aname">Д. Батбаяр</span></div>
+          <a class="bc-link" href="#">Унших →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- POST 5 -->
+    <div class="bc" data-cat="tips">
+      <div class="bc-img" style="background:linear-gradient(135deg,#f5f0ff,#e8d8ff);">
+        <span class="bc-cat">Зөвлөмж</span>
+        <span style="font-size:3.5rem;">⚡</span>
+      </div>
+      <div class="bc-body">
+        <div class="bc-meta"><span>📅 2026-04-05</span><span>⏱ 3 мин</span><span>👁 1,100</span></div>
+        <h3>Вэбсайтын ачаалах хурд 2 секундад хүргэх 5 арга</h3>
+        <p>Удаан сайт = алдагдсан харилцагч. Google PageSpeed, image optimization, CDN гэж яах вэ?</p>
+        <div class="bc-footer">
+          <div class="bc-author"><div class="bc-av">Б</div><span class="bc-aname">Б. Мөнхжаргал</span></div>
+          <a class="bc-link" href="#">Унших →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- POST 6 -->
+    <div class="bc" data-cat="business">
+      <div class="bc-img" style="background:linear-gradient(135deg,#fff5f0,#ffe0c8);">
+        <span class="bc-cat">Бизнес</span>
+        <span style="font-size:3.5rem;">💰</span>
+      </div>
+      <div class="bc-body">
+        <div class="bc-meta"><span>📅 2026-03-28</span><span>⏱ 9 мин</span><span>👁 3,200</span></div>
+        <h3>Вэбсайтад оруулсан хөрөнгийн буцаалт (ROI) хэрхэн тооцох вэ?</h3>
+        <p>Жишээ тооцоолол: 1,500,000₮ зарцуулаад, 8 сарын дотор хэдэн төгрөгийн орлого авах боломжтой?</p>
+        <div class="bc-footer">
+          <div class="bc-author"><div class="bc-av">О</div><span class="bc-aname">О. Энхтуяа</span></div>
+          <a class="bc-link" href="#">Унших →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- POST 7 -->
+    <div class="bc" data-cat="seo">
+      <div class="bc-img" style="background:linear-gradient(135deg,#f0f8ff,#c8e8ff);">
+        <span class="bc-cat">SEO</span>
+        <span style="font-size:3.5rem;">🗺</span>
+      </div>
+      <div class="bc-body">
+        <div class="bc-meta"><span>📅 2026-03-20</span><span>⏱ 5 мин</span><span>👁 980</span></div>
+        <h3>Google Maps-д бизнесээ хэрхэн зөв тавих вэ? — Орон нутгийн SEO</h3>
+        <p>Google Business Profile оновчтой болгох, нутгийн хайлтад гарах арга замууд.</p>
+        <div class="bc-footer">
+          <div class="bc-author"><div class="bc-av">Д</div><span class="bc-aname">Д. Батбаяр</span></div>
+          <a class="bc-link" href="#">Унших →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- POST 8 -->
+    <div class="bc" data-cat="design">
+      <div class="bc-img" style="background:linear-gradient(135deg,#f9f0ff,#f0d8ff);">
+        <span class="bc-cat">Дизайн</span>
+        <span style="font-size:3.5rem;">🎯</span>
+      </div>
+      <div class="bc-body">
+        <div class="bc-meta"><span>📅 2026-03-15</span><span>⏱ 6 мин</span><span>👁 840</span></div>
+        <h3>Landing page конверс 3 дахин нэмэгдүүлэх дизайны зарчмууд</h3>
+        <p>CTA байршил, цвет сонголт, итгэлийн элементүүд — A/B тест дээр суурилсан баримт.</p>
+        <div class="bc-footer">
+          <div class="bc-author"><div class="bc-av">Б</div><span class="bc-aname">Б. Мөнхжаргал</span></div>
+          <a class="bc-link" href="#">Унших →</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- POST 9 -->
+    <div class="bc" data-cat="ecommerce">
+      <div class="bc-img" style="background:linear-gradient(135deg,#fff8f0,#ffecc8);">
+        <span class="bc-cat">E-Commerce</span>
+        <span style="font-size:3.5rem;">📦</span>
+      </div>
+      <div class="bc-body">
+        <div class="bc-meta"><span>📅 2026-03-08</span><span>⏱ 7 мин</span><span>👁 1,430</span></div>
+        <h3>Онлайн дэлгүүр нээхээс өмнө мэдэх ёстой 8 зүйл</h3>
+        <p>Домэйн, хостинг, платформ сонголт, логистик, НӨАТ бүртгэл — бүгдийг нь нарийвчлан тайлбарлав.</p>
+        <div class="bc-footer">
+          <div class="bc-author"><div class="bc-av">О</div><span class="bc-aname">О. Энхтуяа</span></div>
+          <a class="bc-link" href="#">Унших →</a>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- LOAD MORE -->
+  <div style="text-align:center;margin-top:3rem;">
+    <button onclick="this.textContent='Ачааллаж байна...';setTimeout(()=>{this.textContent='Дараагийн 9 нийтлэл ачааллах';},1500);" style="background:transparent;border:1px solid #C9A84C;color:#C9A84C;padding:13px 32px;border-radius:6px;font-size:14px;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif;transition:all .2s;" onmouseover="this.style.background='#C9A84C';this.style.color='#111';" onmouseout="this.style.background='transparent';this.style.color='#C9A84C';">Дараагийн 9 нийтлэл ачааллах</button>
+  </div>
+</div>
+
+<!-- TOPIC TAGS -->
+<div class="topics-wrap">
+  <div class="sec-label">Сэдвүүд</div>
+  <div class="sec-title" style="margin-bottom:1.5rem;">Таны сонирхох сэдвүүд</div>
+  <div class="topics-grid">
+    <div class="topic-card"><span class="topic-ico">🎨</span><div><div class="topic-name">UI/UX Дизайн</div><div class="topic-count">12 нийтлэл</div></div></div>
+    <div class="topic-card"><span class="topic-ico">🔍</span><div><div class="topic-name">SEO & Хайлт</div><div class="topic-count">9 нийтлэл</div></div></div>
+    <div class="topic-card"><span class="topic-ico">🛒</span><div><div class="topic-name">E-Commerce</div><div class="topic-count">7 нийтлэл</div></div></div>
+    <div class="topic-card"><span class="topic-ico">📱</span><div><div class="topic-name">Mobile Дизайн</div><div class="topic-count">6 нийтлэл</div></div></div>
+    <div class="topic-card"><span class="topic-ico">📈</span><div><div class="topic-name">Бизнес өсгөлт</div><div class="topic-count">11 нийтлэл</div></div></div>
+    <div class="topic-card"><span class="topic-ico">⚡</span><div><div class="topic-name">Хурд & Техник</div><div class="topic-count">5 нийтлэл</div></div></div>
+    <div class="topic-card"><span class="topic-ico">🔒</span><div><div class="topic-name">Аюулгүй байдал</div><div class="topic-count">4 нийтлэл</div></div></div>
+    <div class="topic-card"><span class="topic-ico">💡</span><div><div class="topic-name">Кейс Стади</div><div class="topic-count">8 нийтлэл</div></div></div>
+  </div>
+</div>
+
+<!-- NEWSLETTER -->
+<div class="newsletter">
+  <h2>Долоо хоног бүр <em>үнэгүй зөвлөмж</em> авах</h2>
+  <p>1,200+ бизнес эрхлэгч бидний мэдээллийн хуудсыг дагаж байна. Та ч нэгдээрэй.</p>
+  <div class="nl-form">
+    <input type="email" placeholder="Таны имэйл хаяг..." id="nlEmail">
+    <button class="nl-btn" onclick="nlSubmit()">Бүртгүүлэх</button>
+  </div>
+  <div class="nl-ok" id="nlOk">✓ Амжилттай бүртгэгдлээ! Дараагийн мэдээллийг хүлээж байгаарай.</div>
+</div>
+
+<!-- FOOTER -->
+<footer>
+  <div class="f-logo">LeadJeatt</div>
+  <div class="f-nav">
+    <a href="index.html">Нүүр</a>
+    <a href="services.html">Үйлчилгээ</a>
+    <a href="portfolio.html">Ажлууд</a>
+    <a href="pricing.html">Үнэ</a>
+    <a href="blog.html">Блог</a>
+    <a href="contact.html">Холбоо барих</a>
+  </div>
+  <p>© 2026 LeadJeatt · <a href="mailto:LeadJeatt@gmail.com" style="color:#C9A84C;">LeadJeatt@gmail.com</a></p>
+</footer>
+
+<script>
+function om(id){document.getElementById(id).classList.add('active');}
+function cm(id){document.getElementById(id).classList.remove('active');}
+document.getElementById('qm').addEventListener('click',function(e){if(e.target===this)cm('qm');});
+function sq(){var n=document.getElementById('qn').value.trim(),e=document.getElementById('qe').value.trim();if(!n||!e){alert('Нэр болон имэйлээ оруулна уу.');return;}document.getElementById('qs').style.display='block';setTimeout(function(){cm('qm');document.getElementById('qs').style.display='none';},2500);}
+function filterCat(btn,cat){
+  document.querySelectorAll('.cat-btn').forEach(b=>b.classList.remove('active'));
+  btn.classList.add('active');
+  document.querySelectorAll('#blogGrid .bc').forEach(c=>{
+    if(cat==='all'||c.dataset.cat===cat){c.style.display='block';}
+    else{c.style.display='none';}
+  });
+}
+function sortPosts(val){
+  var grid=document.getElementById('blogGrid');
+  var cards=Array.from(grid.querySelectorAll('.bc'));
+  if(val==='popular'){
+    cards.sort((a,b)=>{
+      var av=parseInt(a.querySelector('.bc-meta span:nth-child(3)').textContent.replace(/\D/g,''));
+      var bv=parseInt(b.querySelector('.bc-meta span:nth-child(3)').textContent.replace(/\D/g,''));
+      return bv-av;
+    });
+  } else if(val==='short'){
+    cards.sort((a,b)=>{
+      var av=parseInt(a.querySelector('.bc-meta span:nth-child(2)').textContent);
+      var bv=parseInt(b.querySelector('.bc-meta span:nth-child(2)').textContent);
+      return av-bv;
+    });
+  }
+  cards.forEach(c=>grid.appendChild(c));
+}
+function nlSubmit(){
+  var e=document.getElementById('nlEmail').value.trim();
+  if(!e||!e.includes('@')){alert('Зөв имэйл оруулна уу.');return;}
+  document.getElementById('nlOk').style.display='block';
+  document.getElementById('nlEmail').value='';
+}
+</script>
+</body>
+</html>
